@@ -15,9 +15,10 @@ export default new Vuex.Store({
   },
   actions: {
     async setChat({ commit }) {
-      setInterval(async () => {
-        const chat = await axios.get(`${process.env.VUE_APP_SERVER_HOST}/chat`);
-        commit('setChat', chat);
+      setInterval(() => {
+        axios.get(`${process.env.VUE_APP_SERVER_HOST}/chat`)
+          .then((data) => commit('setChat', data))
+          .catch((err) => console.log(err));
       }, 500);
     },
   },

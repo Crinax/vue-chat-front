@@ -180,8 +180,8 @@ export default {
 
 <style scoped lang="scss">
 .fade-enter-active, .fade-leave-active, .fade-reverse-enter-active, .fade-reverse-leave-active {
-  transition: opacity .7s,
-              transform .7s;
+  transition: opacity .5s,
+              transform .5s;
 }
 
 .fade-enter, .fade-leave-to {
