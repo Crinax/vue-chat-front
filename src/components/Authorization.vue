@@ -6,7 +6,7 @@
           class="authorization-form__login-form login-form default-form"
           key="login-form"
           v-if="!isValidLogin"
-          autofocus
+          v-focus
       >
         <transition name="fade-reverse" mode="out-in" appear>
           <p class="login-form__error-message form-error-message" v-if="isError">
@@ -20,7 +20,7 @@
               id="login"
               class="login-form__login-field form-field"
               :class="['login-form__login-field', 'form-field', hasLoginContent]"
-              autofocus
+              v-focus
           />
           <label class="field-placeholder" for="login">Логин</label>
         </div>
@@ -74,6 +74,9 @@ export default {
       isValidLogin: false,
       errorMessage: '',
     };
+  },
+  mounted() {
+    console.log(this.$root);
   },
   methods: {
     checkLogin() {
@@ -135,9 +138,7 @@ export default {
       } catch (err) {
         this.isValidLogin = false;
         this.isError = true;
-        this.errorMessage = 'Что-то пошло не так. Попробуйте позже';
-
-        console.log(err);
+        this.errorMessage = 'Сервер временно недоступен. Приносим свои извинения';
 
         return;
       }
